@@ -15,10 +15,16 @@ def caesar_decrypt(encrypted_text, shift):
     return caesar_encrypt(encrypted_text, -shift)
 
 
-text = input("Введите текст для шифрования: ")
-shift = int(input("Введите шаг сдвига: "))
-
-encrypted_text = caesar_encrypt(text, shift)
-print("Зашифрованный текст:", encrypted_text)
-decrypted_text = caesar_decrypt(encrypted_text, shift)
-print("Расшифрованый текст: ", decrypted_text)
+def main():
+    while True:
+        try:
+            text = input("Введите текст для шифрования: ")
+            shift = int(input("Введите шаг сдвига: "))
+            encrypted_text = caesar_encrypt(text, shift)
+            print("Зашифрованный текст:", encrypted_text)
+            decrypted_text = caesar_decrypt(encrypted_text, shift)
+            print("Расшифрованый текст: ", decrypted_text)
+            break
+        except ValueError:
+            print("Что-то пошло не так, попробуйте снова.")
+main()
