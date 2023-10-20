@@ -1,12 +1,11 @@
-def encrypt_caesar(text, shift):
-    if text.isalpha():
-        num = ord(text) + shift % 32
-        if num > 1103:
-            num -= 32
-        return chr(num)
-    return text
+def caesar_encrypt(text, shift):
+    encrypted_text = ""
+    for char in text:
+        if char.isupper():
+            encrypted_text += chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+        elif char.islower():
+            encrypted_text += chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+        else:
+            encrypted_text += char
+    return encrypted_text
 
-
-def decrypt_caesar(encrypted, shift):
-    shift %= 26
-    return encrypt_caesar(encrypted, -shift)
