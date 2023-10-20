@@ -9,3 +9,16 @@ def caesar_encrypt(text, shift):
             encrypted_text += char
     return encrypted_text
 
+
+def caesar_decrypt(encrypted_text, shift):
+    shift %= 26
+    return caesar_encrypt(encrypted_text, -shift)
+
+
+text = input("Введите текст для шифрования: ")
+shift = int(input("Введите шаг сдвига: "))
+
+encrypted_text = caesar_encrypt(text, shift)
+print("Зашифрованный текст:", encrypted_text)
+decrypted_text = caesar_decrypt(encrypted_text, shift)
+print("Расшифрованый текст: ", decrypted_text)
