@@ -19,12 +19,15 @@ def main():
     while True:
         try:
             text = input("Введите текст для шифрования: ")
-            shift = int(input("Введите шаг сдвига: "))
-            encrypted_text = caesar_encrypt(text, shift)
-            print("Зашифрованный текст:", encrypted_text)
-            decrypted_text = caesar_decrypt(encrypted_text, shift)
-            print("Расшифрованый текст: ", decrypted_text)
+            if text.isascii():
+                shift = int(input("Введите шаг сдвига: "))
+                encrypted_text = caesar_encrypt(text, shift)
+                print("Зашифрованный текст:", encrypted_text)
+                decrypted_text = caesar_decrypt(encrypted_text, shift)
+                print("Расшифрованый текст: ", decrypted_text)
+            else:
+                print("Вы ввели текст кириллицей, а надо латиницей, попробуйте снова.")
             break
         except ValueError:
-            print("Что-то пошло не так, попробуйте снова.")
+            print("Вы ввели не числовой шаг сдвига, попробуйте снова.")
 main()
